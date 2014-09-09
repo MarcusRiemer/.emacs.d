@@ -15,6 +15,16 @@
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
 
+;; Working with projectile
+(projectile-global-mode)
+(global-set-key (kbd "C-S-s") 'projectile-switch-project)
+
+;; Working with helm
+(semantic-mode 1)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "M-x")   'helm-M-x)
+(global-set-key (kbd "C-r")   'helm-projectile)
+
 ;; Set proxy for university laptop
 (when (string= system-name "marcus-hp")
   (setq url-proxy-services
@@ -22,10 +32,13 @@
      ("http" . "cwlan-cache.fh-wedel.de:3128")
      ("https" . "cwlan-cache.fh-wedel.de:3128"))))
 
-;; Use marmalade packages
+;; Use marmalade and melpa packages
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+
 (package-initialize)
 
 ;; Haskell indentation mode
