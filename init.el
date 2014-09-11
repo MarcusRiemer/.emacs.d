@@ -2,6 +2,16 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Use marmalade and melpa packages
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+
+(package-initialize)
+
+
 ;; Old visual studio habits die slowly, I want to
 ;; compile via F5 ...
 (setq compilation-ask-about-save nil)
@@ -31,15 +41,6 @@
    '(("no_proxy" . "^\\(localhost\\|10.*\\)")
      ("http" . "cwlan-cache.fh-wedel.de:3128")
      ("https" . "cwlan-cache.fh-wedel.de:3128"))))
-
-;; Use marmalade and melpa packages
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-  '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
-
-(package-initialize)
 
 ;; Haskell indentation mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
