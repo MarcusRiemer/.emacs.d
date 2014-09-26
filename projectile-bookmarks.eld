@@ -1,1 +1,1 @@
-("~/projects/german-numbers/")
+("~/projects/hackaton/scotty/" "~/.emacs.d/" "~/projects/german-numbers/" "~/projects/marcusriemer.de/")
