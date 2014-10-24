@@ -2,6 +2,17 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Use marmalade and melpa packages
+(require 'package)
+(add-to-list 'package-archives
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+
+(load-theme 'spacegray t)
+
 ;; Old visual studio habits die slowly, I want to
 ;; compile via F5 ...
 (setq compilation-ask-about-save nil)
@@ -17,7 +28,7 @@
 
 ;; Working with projectile
 (projectile-global-mode)
-(global-set-key (kbd "C-S-s") 'projectile-switch-project)
+(global-set-key (kbd "C-M-p") 'projectile-switch-project)
 
 ;; Working with helm
 (semantic-mode 1)
@@ -32,20 +43,13 @@
      ("http" . "cwlan-cache.fh-wedel.de:3128")
      ("https" . "cwlan-cache.fh-wedel.de:3128"))))
 
-;; Use marmalade and melpa packages
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-  '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
-
-(package-initialize)
-
 ;; Haskell indentation mode
+(require 'haskell-cabal)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
-
-;; Use cabal as REPL environment
+(setq haskell-ghci-program-name "cabal")
+(setq haskell-ghci-program-args '("repl"))
 (setq haskell-program-name "cabal repl")
 
 ;; Python mode
