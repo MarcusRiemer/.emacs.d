@@ -7,14 +7,22 @@
 
 ;; Load plugins now, otherwise
 (require 'package)
-(setq package-enable-at-startup nil) ; To avoid initializing twice
-(package-initialize)
 
 ;; Use marmalade and melpa packages
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+  '("melpa" . "http://melpa.org/packages/") t)
+
+(setq package-enable-at-startup nil) ; To avoid initializing twice
+(package-initialize)
+
+;; Set proxy for university laptop
+(when (string= system-name "mri-tp")
+  (setq url-proxy-services
+   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+     ("http" . "cwlan-cache.fh-wedel.de:3128")
+     ("https" . "cwlan-cache.fh-wedel.de:3128"))))
 
 ;; Old visual studio habits die slowly, I want to
 ;; compile via F5 ...
@@ -29,6 +37,9 @@
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
 
+(load-theme 'ample-zen t)
+
+
 ;; Working with projectile
 ;;(require 'projectile)
 (projectile-global-mode)
@@ -40,20 +51,13 @@
 (global-set-key (kbd "M-x")   'helm-M-x)
 (global-set-key (kbd "C-r")   'helm-projectile)
 
-;; Set proxy for university laptop
-(when (string= system-name "marcus-hp")
-  (setq url-proxy-services
-   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
-     ("http" . "cwlan-cache.fh-wedel.de:3128")
-     ("https" . "cwlan-cache.fh-wedel.de:3128"))))
-
-
-
 ;; Haskell indentation mode
+(require 'haskell-cabal)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
-
-;; Use cabal as REPL environment
+(setq haskell-ghci-program-name "cabal")
+(setq haskell-ghci-program-args '("repl"))
 (setq haskell-program-name "cabal repl")
 
 ;; Python mode
