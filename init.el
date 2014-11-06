@@ -11,7 +11,10 @@
 
 (package-initialize)
 
-(load-theme 'spacegray t)
+;; Lets use a theme :)
+(load-theme 'monokai t)
+(global-hl-line-mode 1)
+(global-linum-mode 1)
 
 ;; Old visual studio habits die slowly, I want to
 ;; compile via F5 ...
@@ -36,6 +39,15 @@
 (global-set-key (kbd "M-x")   'helm-M-x)
 (global-set-key (kbd "C-r")   'helm-projectile)
 
+;; Emacs Code Browser
+(require 'ecb)
+
+(global-set-key (kbd "C-1") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-2") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-3") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-4") 'ecb-goto-window-methods)
+(global-set-key (kbd "C-5") 'ecb-goto-window-history)
+
 ;; Set proxy for university laptop
 (when (string= system-name "marcus-hp")
   (setq url-proxy-services
@@ -56,3 +68,15 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
