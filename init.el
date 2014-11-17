@@ -8,6 +8,13 @@
 ;; Nobody ever wants tabs
 (setq-default indent-tabs-mode nil)
 
+;; Everybody wants UTF8 all the way
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-selection-coding-system 'utf-8)
+(set-locale-environment "en.UTF-8")
+(prefer-coding-system 'utf-8)
+
 ;; Load plugins now, otherwise
 (require 'package)
 
@@ -68,12 +75,29 @@
 
 ;; Emacs Code Browser
 (require 'ecb)
+(setq ecb-tip-of-the-day nil)
+(setq ecb-show-sources-in-directories-buffer 'always)
+(setq ecb-layout-name "left7")
 
 (global-set-key (kbd "C-1") 'ecb-goto-window-edit1)
 (global-set-key (kbd "C-2") 'ecb-goto-window-directories)
-(global-set-key (kbd "C-3") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-3") 'ecb-goto-window-history)
 (global-set-key (kbd "C-4") 'ecb-goto-window-methods)
-(global-set-key (kbd "C-5") 'ecb-goto-window-history)
+
+
+(defvar default-ecb-source-path ())
+
+(add-hook 'ecb-basic-buffer-sync-hook
+		  (lambda ()
+			(when (functionp 'projectile-get-project-directories)
+			  (when (projectile-project-p)
+				(dolist (path-dir (projectile-get-project-directories))
+				  (unless (member (list path-dir path-dir) default-ecb-source-path)
+					(push (list path-dir path-dir) default-ecb-source-path)
+					(customize-set-variable 'ecb-source-path default-ecb-source-path)
+					))))))
+
+(ecb-activate)
 
 ;; Haskell indentation mode
 (require 'haskell-cabal)
@@ -97,6 +121,13 @@
   (local-set-key (kbd "RET") 'newline-and-indent)
 ) 
 (add-hook 'web-mode-hook 'my-web-mode-hook)
+
+;; SQL Mode
+(setq sql-mysql-login-params
+      '((user :default "fh_abbild")
+        (database :default "fh_abbild")
+        (server :default "db-uebung.fh-wedel.de")))
+(add-hook 'sql-interactive-mode-hook '(lambda () (toggle-truncate-lines 1))
 
 ;; And set some variables
 (custom-set-variables
