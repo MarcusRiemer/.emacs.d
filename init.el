@@ -38,9 +38,7 @@
 ;; Load plugins now, otherwise
 (require 'package)
 
-;; Use marmalade and melpa packages
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; Melpa packages
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)
 
