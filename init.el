@@ -38,9 +38,7 @@
 ;; Load plugins now, otherwise
 (require 'package)
 
-;; Use marmalade and melpa packages
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; Melpa packages
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)
 
@@ -52,6 +50,7 @@
 (require 'adaptive-wrap)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
+(nyan-mode)
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
