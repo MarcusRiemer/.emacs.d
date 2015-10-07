@@ -3,3 +3,6 @@ backups
 elpa
 projectile-bookmarks.eld
 semanticdb
+games/
+projectile.cache
+recentf
