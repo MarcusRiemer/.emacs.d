@@ -59,6 +59,7 @@
 (load-file "~/.emacs.d/elisp/python.el")
 (load-file "~/.emacs.d/elisp/web.el")
 (load-file "~/.emacs.d/elisp/sql.el")
+(load-file "~/.emacs.d/elisp/latex.el")
 (load-file "~/.emacs.d/elisp/javascript.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
