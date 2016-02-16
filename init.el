@@ -1,5 +1,6 @@
 ;; Remove all those rather annoying toolbars and menus
-(tool-bar-mode -1)
+(if (display-graphic-p)
+    (tool-bar-mode -1))
 (menu-bar-mode -1)
 
 ;; And turn off that bell ...
@@ -45,12 +46,18 @@
 (setq package-enable-at-startup nil) ; To avoid initializing twice
 (package-initialize)
 
+(dolist (package '(adaptive-wrap ample-zen-theme auctex company ecb f dash s go-mode graphviz-dot-mode haskell-mode helm-projectile dash projectile pkg-info epl dash helm helm-core async async highlight-symbol markdown-mode nyan-mode projectile pkg-info epl dash protobuf-mode s spacegray-theme thrift tss yaxception log4e json-mode json-snatcher json-reformat auto-complete popup web-mode yaml-mode yaxception))
+  (unless (package-installed-p package)
+        (package-install package)))
+
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
 (require 'adaptive-wrap)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
-(nyan-mode)
+(if (display-graphic-p)
+    (nyan-mode))
+
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
@@ -63,6 +70,8 @@
 (load-file "~/.emacs.d/elisp/javascript.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
+
+(load-file "~/.emacs.d/static/nginx-mode.el")
 
 ;; Lets use a theme :)
 (global-hl-line-mode 1)
