@@ -46,9 +46,9 @@
 (setq package-enable-at-startup nil) ; To avoid initializing twice
 (package-initialize)
 
-(dolist (package '(adaptive-wrap ample-zen-theme auctex company ecb f dash s go-mode graphviz-dot-mode haskell-mode helm-projectile dash projectile pkg-info epl dash helm helm-core async async highlight-symbol markdown-mode nyan-mode projectile pkg-info epl dash protobuf-mode s spacegray-theme thrift tss yaxception log4e json-mode json-snatcher json-reformat auto-complete popup web-mode yaml-mode yaxception))
-  (unless (package-installed-p package)
-        (package-install package)))
+;; Making sure all relevant packages are installed
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile nyan-mode))
+(mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
@@ -61,6 +61,7 @@
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
+(load-file "~/.emacs.d/elisp/company.el")
 (load-file "~/.emacs.d/elisp/ecb.el")
 (load-file "~/.emacs.d/elisp/haskell.el")
 (load-file "~/.emacs.d/elisp/python.el")
