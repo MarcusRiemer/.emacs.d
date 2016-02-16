@@ -45,6 +45,10 @@
 (setq package-enable-at-startup nil) ; To avoid initializing twice
 (package-initialize)
 
+;; Making sure all relevant packages are installed
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile nyan-mode))
+(mapc #'package-install my-package-list)
+
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
 (require 'adaptive-wrap)
