@@ -1,5 +1,6 @@
 ;; Remove all those rather annoying toolbars and menus
-(tool-bar-mode -1)
+(if (display-graphic-p)
+    (tool-bar-mode -1))
 (menu-bar-mode -1)
 
 ;; And turn off that bell ...
@@ -54,7 +55,9 @@
 (require 'adaptive-wrap)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
-(nyan-mode)
+(if (display-graphic-p)
+    (nyan-mode))
+
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
@@ -68,6 +71,8 @@
 (load-file "~/.emacs.d/elisp/javascript.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
+
+(load-file "~/.emacs.d/static/nginx-mode.el")
 
 ;; Lets use a theme :)
 (global-hl-line-mode 1)
