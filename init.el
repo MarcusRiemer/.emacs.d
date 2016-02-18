@@ -47,7 +47,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile nyan-mode))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
@@ -95,7 +95,10 @@
  '(adaptive-wrap-extra-indent 4)
  '(ecb-layout-window-sizes
    (quote
-    (("left7"
+    (("left15"
+      (ecb-directories-buffer-name 0.1694915254237288 . 0.6712328767123288)
+      (ecb-methods-buffer-name 0.1694915254237288 . 0.3287671232876712))
+     ("left7"
       (ecb-directories-buffer-name 0.17872340425531916 . 0.589041095890411)
       (ecb-history-buffer-name 0.17872340425531916 . 0.1643835616438356)
       (ecb-methods-buffer-name 0.17872340425531916 . 0.2465753424657534))

@@ -6,7 +6,7 @@
   (require 'ecb)
   (setq ecb-tip-of-the-day nil)
   (setq ecb-show-sources-in-directories-buffer 'always)
-  (setq ecb-layout-name "left7")
+  (setq ecb-layout-name "left15")
 
   (global-set-key (kbd "C-1") 'ecb-goto-window-edit1)
   (global-set-key (kbd "C-2") 'ecb-goto-window-directories)
