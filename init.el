@@ -47,7 +47,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
