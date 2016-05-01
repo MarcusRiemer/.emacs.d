@@ -7,4 +7,3 @@
 (global-set-key (kbd "C-r") 'helm-projectile)
 (global-set-key (kbd "C-t") 'helm-semantic-or-imenu)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-
