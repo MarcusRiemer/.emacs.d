@@ -2,6 +2,7 @@
 (if (display-graphic-p)
     (tool-bar-mode -1))
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; And turn off that bell ...
 (setq visible-bell 1)
@@ -90,7 +91,7 @@
     (((output-dvi style-pstricks)
       "dvips and gv")
      (output-dvi "xdvi")
-     (output-pdf "Okular")
+     (output-pdf "Evince")
      (output-html "xdg-open"))))
  '(adaptive-wrap-extra-indent 4)
  '(ansi-color-names-vector
