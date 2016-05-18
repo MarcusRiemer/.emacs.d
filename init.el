@@ -48,7 +48,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
@@ -114,6 +114,7 @@
       (ecb-methods-buffer-name 0.20425531914893616 . 0.3013698630136986)
       (ecb-history-buffer-name 0.20425531914893616 . 0.1643835616438356)))))
  '(ecb-options-version "2.40")
+ '(git-commit-summary-max-length 200)
  '(fci-rule-color "#2e2e2e")
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(vc-annotate-background "#3b3b3b")
