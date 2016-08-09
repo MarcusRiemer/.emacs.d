@@ -22,17 +22,17 @@
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  version-control t)
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+(global-set-key (kbd "M-<left>")  'windmove-left)
+(global-set-key (kbd "M-<right>") 'windmove-right)
+(global-set-key (kbd "M-<up>")    'windmove-up)
+(global-set-key (kbd "M-<down>")  'windmove-down)
 
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
-
-;; Old visual studio habits die slowly, I want to
-;; compile via F5 ...
-(setq compilation-ask-about-save nil)
-(global-set-key [f5] 'compile)
 
 ;; Loading various more or less organized parts of my config
 (load-file "~/.emacs.d/elisp/proxy.el")
@@ -48,7 +48,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
@@ -56,9 +56,12 @@
 (require 'adaptive-wrap)
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
+;; All important nyan cat!
 (if (display-graphic-p)
     (nyan-mode))
 
+;; Allow flipping buffers
+(defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
@@ -72,12 +75,12 @@
 (load-file "~/.emacs.d/elisp/javascript.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
+(load-file "~/.emacs.d/elisp/magit.el")
 
 (load-file "~/.emacs.d/static/nginx-mode.el")
 
 ;; Lets use a theme :)
 (global-hl-line-mode 1)
-(global-linum-mode 1)
 (load-theme 'ample-zen t)
 
 ;; And set some variables
@@ -101,7 +104,9 @@
     ("8cf56691a70156f611ac86d0bbcbc7dee7673df195de5918f34bfdc6814ffd39" default)))
  '(ecb-layout-window-sizes
    (quote
-    (("left15"
+    (("left13"
+      (ecb-directories-buffer-name 0.17721518987341772 . 0.9863013698630136))
+     ("left15"
       (ecb-directories-buffer-name 0.1694915254237288 . 0.6712328767123288)
       (ecb-methods-buffer-name 0.1694915254237288 . 0.3287671232876712))
      ("left7"
@@ -114,8 +119,9 @@
       (ecb-methods-buffer-name 0.20425531914893616 . 0.3013698630136986)
       (ecb-history-buffer-name 0.20425531914893616 . 0.1643835616438356)))))
  '(ecb-options-version "2.40")
- '(git-commit-summary-max-length 200)
  '(fci-rule-color "#2e2e2e")
+ '(git-commit-summary-max-length 999)
+ '(magit-tag-arguments (quote ("--annotate")))
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
