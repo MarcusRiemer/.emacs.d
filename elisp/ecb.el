@@ -6,13 +6,10 @@
   (require 'ecb)
   (setq ecb-tip-of-the-day nil)
   (setq ecb-show-sources-in-directories-buffer 'always)
-  (setq ecb-layout-name "left15")
+  (setq ecb-layout-name "left13")
 
   (global-set-key (kbd "C-1") 'ecb-goto-window-edit1)
   (global-set-key (kbd "C-2") 'ecb-goto-window-directories)
-  (global-set-key (kbd "C-3") 'ecb-goto-window-history)
-  (global-set-key (kbd "C-4") 'ecb-goto-window-methods)
-
 
   (defvar default-ecb-source-path ())
 
