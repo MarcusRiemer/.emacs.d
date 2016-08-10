@@ -26,6 +26,9 @@
   kept-old-versions 2
   version-control t)
 
+;; Faster than the default scp
+(setq tramp-default-method "ssh")
+
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
 
