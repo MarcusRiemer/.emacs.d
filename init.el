@@ -26,10 +26,14 @@
       kept-old-versions 2
       version-control t)
 
+;; Nicer keyboard navigation
 (global-set-key (kbd "M-<left>")  'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
+
+;; Remove prompt when killing a buffer
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; Faster than the default scp
 (setq tramp-default-method "ssh")
@@ -69,14 +73,14 @@
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
-(load-file "~/.emacs.d/elisp/ecb.el")
-(load-file "~/.emacs.d/elisp/haskell.el")
-(load-file "~/.emacs.d/elisp/python.el")
+;; (load-file "~/.emacs.d/elisp/ecb.el")
+;; (load-file "~/.emacs.d/elisp/haskell.el")
+;; (load-file "~/.emacs.d/elisp/python.el")
 (load-file "~/.emacs.d/elisp/web.el")
-(load-file "~/.emacs.d/elisp/sql.el")
+;; (load-file "~/.emacs.d/elisp/sql.el")
 (load-file "~/.emacs.d/elisp/latex.el")
 (load-file "~/.emacs.d/elisp/javascript.el")
-(load-file "~/.emacs.d/elisp/go.el")
+;; (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
 (load-file "~/.emacs.d/elisp/magit.el")
 
@@ -125,6 +129,9 @@
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(magit-tag-arguments (quote ("--annotate")))
+ '(package-selected-packages
+   (quote
+    (helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
@@ -154,3 +161,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'dired-find-alternate-file 'disabled nil)
