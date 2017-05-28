@@ -73,6 +73,7 @@
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
+(load-file "~/.emacs.d/elisp/markdown.el")
 ;; (load-file "~/.emacs.d/elisp/ecb.el")
 ;; (load-file "~/.emacs.d/elisp/haskell.el")
 ;; (load-file "~/.emacs.d/elisp/python.el")
