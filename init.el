@@ -130,10 +130,12 @@
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(magit-tag-arguments (quote ("--annotate")))
+ '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
     (helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
+ '(typescript-indent-level 2)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
    (quote

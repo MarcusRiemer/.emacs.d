@@ -1,4 +1,8 @@
 (eval-after-load "markdown-mode"
   '(progn
-    (define-key markdown-mode-map (kbd "M-<right>") nil) ;; unbind M-right
-    (define-key markdown-mode-map (kbd "M-<left>") nil))) ;; unbind M-left
+    (define-key markdown-mode-map (kbd "M-<right>") nil) 
+    (define-key markdown-mode-map (kbd "M-<left>") nil)
+    (define-key markdown-mode-map (kbd "M-<up>") nil)
+    (define-key markdown-mode-map (kbd "M-<down>") nil)
+  )
+)
