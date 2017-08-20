@@ -19,12 +19,14 @@
 (prefer-coding-system 'utf-8)
 
 ;; Write backup files to own directory
-(setq backup-directory-alist `(("." . "~/.saves")))
-(setq backup-by-copying t)
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
 
 ;; Nicer keyboard navigation
 (global-set-key (kbd "M-<left>")  'windmove-left)
@@ -58,6 +60,11 @@
 (setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
 (require 'adaptive-wrap)
@@ -66,9 +73,6 @@
 ;; All important nyan cat!
 (if (display-graphic-p)
     (nyan-mode))
-
-;; Allow flipping buffers
-(defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
@@ -91,6 +95,29 @@
 (global-hl-line-mode 1)
 (load-theme 'ample-zen t)
 
+;; Helpful functions
+
+;; Allow flipping buffers
+(defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
+
+;; Courtesy of "Sean" at https://stackoverflow.com/questions/2551632/
+(defun indent-marked-files ()
+  (interactive)
+  (dolist (file (dired-get-marked-files))
+    (find-file file)
+    (indent-region (point-min) (point-max))
+    (save-buffer)
+    (kill-buffer nil)))
+
+(defun tide-format-marked-files ()
+  (interactive)
+  (dolist (file (dired-get-marked-files))
+    (find-file file)
+    (tide-format)
+    (save-buffer)
+    (kill-buffer nil)))
+
+
 ;; And set some variables
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -107,6 +134,7 @@
  '(adaptive-wrap-extra-indent 4)
  '(ansi-color-names-vector
    ["#212121" "#CC5542" "#6aaf50" "#7d7c61" "#5180b3" "#DC8CC3" "#9b55c3" "#bdbdb3"])
+ '(create-lockfiles nil)
  '(custom-safe-themes
    (quote
     ("8cf56691a70156f611ac86d0bbcbc7dee7673df195de5918f34bfdc6814ffd39" default)))
@@ -133,7 +161,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+    (editorconfig helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(typescript-indent-level 2)
  '(vc-annotate-background "#3b3b3b")
