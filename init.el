@@ -60,11 +60,6 @@
 (setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
-
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
 (require 'adaptive-wrap)
@@ -78,16 +73,12 @@
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
 (load-file "~/.emacs.d/elisp/markdown.el")
-;; (load-file "~/.emacs.d/elisp/ecb.el")
-;; (load-file "~/.emacs.d/elisp/haskell.el")
-;; (load-file "~/.emacs.d/elisp/python.el")
 (load-file "~/.emacs.d/elisp/web.el")
-;; (load-file "~/.emacs.d/elisp/sql.el")
 (load-file "~/.emacs.d/elisp/latex.el")
 (load-file "~/.emacs.d/elisp/javascript.el")
-;; (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
 (load-file "~/.emacs.d/elisp/magit.el")
+(load-file "~/.emacs.d/elisp/spelling.el")
 
 (load-file "~/.emacs.d/static/nginx-mode.el")
 
@@ -99,6 +90,7 @@
 
 ;; Allow flipping buffers
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
+
 
 ;; Courtesy of "Sean" at https://stackoverflow.com/questions/2551632/
 (defun indent-marked-files ()
@@ -161,8 +153,13 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (editorconfig helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
- '(safe-local-variable-values (quote ((TeX-master . t))))
+    (helm-flyspell graphviz-dot-mode use-package helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+ '(safe-local-variable-values
+   (quote
+    ((TeX-engine . pdflatex)
+     (TeX-command-extra-options . "-shell-escape")
+     (TeX-master . t))))
+ '(tide-server-max-response-length 1024000)
  '(typescript-indent-level 2)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
