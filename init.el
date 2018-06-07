@@ -57,13 +57,8 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
-
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
 
 ;; Turn on nicer line wrapping
 (global-visual-line-mode t) ;; Making sure we are wrapping at word boundaries
@@ -99,6 +94,11 @@
 
 ;; Allow flipping buffers
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
+
+;; Inserting a random uuid at point
+(defun insert-random-uuid ()
+  (interactive)
+  (shell-command "uuidgen" t))
 
 ;; Courtesy of "Sean" at https://stackoverflow.com/questions/2551632/
 (defun indent-marked-files ()
@@ -158,11 +158,13 @@
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(magit-tag-arguments (quote ("--annotate")))
+ '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (editorconfig helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+    (helm-ag graphviz-dot-mode use-package helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
+ '(tide-server-max-response-length 1024000)
  '(typescript-indent-level 2)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
@@ -193,3 +195,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)
