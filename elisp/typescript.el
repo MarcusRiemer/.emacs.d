@@ -17,3 +17,5 @@
 (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+(global-set-key (kbd "C-r") 'tide-rename-symbol)

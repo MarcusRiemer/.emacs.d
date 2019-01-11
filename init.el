@@ -28,6 +28,10 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;; Delete trailing whitespace when saving
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+
 ;; Nicer keyboard navigation
 (global-set-key (kbd "M-<left>")  'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
@@ -124,6 +128,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-engine (quote xetex))
  '(TeX-view-program-selection
    (quote
     (((output-dvi style-pstricks)
@@ -157,12 +162,13 @@
  '(ecb-options-version "2.40")
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
+ '(helm-buffer-max-length nil)
  '(magit-tag-arguments (quote ("--annotate")))
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (helm-ag graphviz-dot-mode use-package helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+    (lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(tide-server-max-response-length 1024000)
  '(typescript-indent-level 2)
