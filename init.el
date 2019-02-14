@@ -38,6 +38,8 @@
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
 
+(global-set-key (kbd "C-c c") 'comment-line)
+
 ;; Remove prompt when killing a buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
