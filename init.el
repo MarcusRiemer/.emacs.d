@@ -28,11 +28,17 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;; Delete trailing whitespace when saving
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+
 ;; Nicer keyboard navigation
 (global-set-key (kbd "M-<left>")  'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
+
+(global-set-key (kbd "C-c c") 'comment-line)
 
 ;; Remove prompt when killing a buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -57,7 +63,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company ecb flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
+(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
@@ -91,6 +97,10 @@
 ;; Allow flipping buffers
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
 
+;; Inserting a random uuid at point
+(defun insert-random-uuid ()
+  (interactive)
+  (shell-command "uuidgen" t))
 
 ;; Courtesy of "Sean" at https://stackoverflow.com/questions/2551632/
 (defun indent-marked-files ()
@@ -116,6 +126,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-engine (quote xetex))
  '(TeX-view-program-selection
    (quote
     (((output-dvi style-pstricks)
@@ -149,17 +160,20 @@
  '(ecb-options-version "2.40")
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
+ '(helm-buffer-max-length nil)
  '(magit-tag-arguments (quote ("--annotate")))
+ '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (helm-flyspell graphviz-dot-mode use-package helm projectile flycheck yaxception yaml-mode web-mode tide thrift spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f ecb company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+    (web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values
    (quote
     ((TeX-engine . pdflatex)
      (TeX-command-extra-options . "-shell-escape")
      (TeX-master . t))))
  '(tide-server-max-response-length 1024000)
+ '(tide-sync-request-timeout 120)
  '(typescript-indent-level 2)
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
@@ -190,3 +204,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)
