@@ -18,6 +18,9 @@
 (set-locale-environment "en.UTF-8")
 (prefer-coding-system 'utf-8)
 
+;; overwrite selected text
+(delete-selection-mode t)
+
 ;; Write backup files to own directory
 (setq
    backup-by-copying t      ; don't clobber symlinks
