@@ -89,6 +89,7 @@
 ;; (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
 (load-file "~/.emacs.d/elisp/magit.el")
+(load-file "~/.emacs.d/elisp/prettier.el")
 
 (load-file "~/.emacs.d/static/nginx-mode.el")
 
@@ -170,7 +171,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+    (prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
  '(safe-local-variable-values (quote ((TeX-master . t))))
  '(tide-server-max-response-length 1024000)
  '(typescript-indent-level 2)
@@ -201,6 +202,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:weight semi-bold :height 110 :width normal :foundry "ADBO" :family "Source Code Pro")))))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
