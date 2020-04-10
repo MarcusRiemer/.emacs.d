@@ -18,6 +18,9 @@
 (set-locale-environment "en.UTF-8")
 (prefer-coding-system 'utf-8)
 
+;; overwrite selected text
+(delete-selection-mode t)
+
 ;; Write backup files to own directory
 (setq
    backup-by-copying t      ; don't clobber symlinks
@@ -38,7 +41,13 @@
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
 
-(global-set-key (kbd "C-c c") 'comment-line)
+;; Accept the previously selected side of a merge
+(defun my-merge-current-goto-next()
+  (interactive)
+  (smerge-keep-current)
+  (smerge-next)
+  )
+(global-set-key (kbd "C-c k") 'my-merge-current-goto-next)
 
 ;; Remove prompt when killing a buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -63,7 +72,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
+(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode))
 (mapc #'package-install my-package-list)
 
 ;; Turn on nicer line wrapping
@@ -85,6 +94,7 @@
 (load-file "~/.emacs.d/elisp/typescript.el")
 (load-file "~/.emacs.d/elisp/magit.el")
 (load-file "~/.emacs.d/elisp/spelling.el")
+(load-file "~/.emacs.d/elisp/prettier.el")
 
 (load-file "~/.emacs.d/static/nginx-mode.el")
 
@@ -166,12 +176,9 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
- '(safe-local-variable-values
-   (quote
-    ((TeX-engine . pdflatex)
-     (TeX-command-extra-options . "-shell-escape")
-     (TeX-master . t))))
+    (prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap)))
+ '(prettier-enabled-parsers (quote (angular css html typescript)))
+ '(safe-local-variable-values (quote ((TeX-master . t))))
  '(tide-server-max-response-length 1024000)
  '(tide-sync-request-timeout 120)
  '(typescript-indent-level 2)
@@ -202,6 +209,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:weight semi-bold :height 110 :width normal :foundry "ADBO" :family "Source Code Pro")))))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
