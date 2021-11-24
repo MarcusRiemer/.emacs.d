@@ -1,9 +1,10 @@
 ;; Web Mode
 (require 'web-mode)
 
-;; Editing all PHP and HTML files with web mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+
 
 ;; Highlight matching elements and their whole column
 (setq web-mode-enable-current-element-highlight t)
