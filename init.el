@@ -76,7 +76,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode lsp-mode lsp-ui helm-lsp use-package))
+(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode lsp-mode lsp-ui helm-lsp use-package rbenv))
 (mapc #'package-install my-package-list)
 
 ;; This is only needed once, near the top of the file
@@ -92,8 +92,12 @@
 (if (display-graphic-p)
     (nyan-mode))
 
+;; Grabbing filenames from buffers
+(load-file "~/.emacs.d/elisp/copy-filename.el")
+
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/lsp.el")
+(load-file "~/.emacs.d/elisp/ruby.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
@@ -178,13 +182,17 @@
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(helm-buffer-max-length nil)
+ '(lsp-solargraph-use-bundler t)
  '(magit-tag-arguments '("--annotate"))
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(kotlin-mode prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(dired-quick-sort kotlin-mode prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
- '(safe-local-variable-values '((TeX-master . t)))
+ '(ruby-insert-encoding-magic-comment nil)
+ '(safe-local-variable-values
+   '((TeX-command-extra-options . "-shell-escape")
+     (TeX-master . t)))
  '(tide-server-max-response-length 1024000)
  '(tide-sync-request-timeout 120)
  '(typescript-indent-level 2)
@@ -214,6 +222,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:weight semi-bold :height 110 :width normal :foundry "ADBO" :family "Source Code Pro")))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#212121" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 110 :width normal :foundry "ADBO" :family "Source Code Pro")))))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
