@@ -25,7 +25,7 @@
 (setq
    backup-by-copying t      ; don't clobber symlinks
    backup-directory-alist
-    '(("." . "~/.saves"))    ; don't litter my fs tree
+    '(("." . "~/.saves"))   ; don't litter my fs tree
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
@@ -41,29 +41,14 @@
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
 
-;; Accept the previously selected side of a merge
-(defun my-merge-current-goto-next()
-  (interactive)
-  (smerge-keep-current)
-  (smerge-next)
-  )
-(global-set-key (kbd "C-c k") 'my-merge-current-goto-next)
-
 ;; Remove prompt when killing a buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
-
-(defun open-konsole-here ()
-  (interactive)
-  (call-process "konsole" nil 0 nil "--workdir" default-directory))
 
 ;; Faster than the default scp
 (setq tramp-default-method "ssh")
 
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
-
-;; Loading various more or less organized parts of my config
-(load-file "~/.emacs.d/elisp/proxy.el")
 
 ;; Load plugins now, otherwise
 (require 'package)
@@ -97,7 +82,6 @@
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/lsp.el")
-(load-file "~/.emacs.d/elisp/ruby.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
@@ -110,13 +94,9 @@
 (load-file "~/.emacs.d/elisp/spelling.el")
 (load-file "~/.emacs.d/elisp/prettier.el")
 
-;; (load-file "~/.emacs.d/static/nginx-mode.el")
-
 ;; Lets use a theme :)
 (global-hl-line-mode 1)
 (load-theme 'ample-zen t)
-
-;; Helpful functions
 
 ;; Allow flipping buffers
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
@@ -125,24 +105,6 @@
 (defun insert-random-uuid ()
   (interactive)
   (shell-command "uuidgen" t))
-
-;; Courtesy of "Sean" at https://stackoverflow.com/questions/2551632/
-(defun indent-marked-files ()
-  (interactive)
-  (dolist (file (dired-get-marked-files))
-    (find-file file)
-    (indent-region (point-min) (point-max))
-    (save-buffer)
-    (kill-buffer nil)))
-
-(defun tide-format-marked-files ()
-  (interactive)
-  (dolist (file (dired-get-marked-files))
-    (find-file file)
-    (tide-format)
-    (save-buffer)
-    (kill-buffer nil)))
-
 
 ;; And set some variables
 (custom-set-variables
@@ -163,22 +125,6 @@
  '(create-lockfiles nil)
  '(custom-safe-themes
    '("8cf56691a70156f611ac86d0bbcbc7dee7673df195de5918f34bfdc6814ffd39" default))
- '(ecb-layout-window-sizes
-   '(("left13"
-      (ecb-directories-buffer-name 0.17721518987341772 . 0.9863013698630136))
-     ("left15"
-      (ecb-directories-buffer-name 0.1694915254237288 . 0.6712328767123288)
-      (ecb-methods-buffer-name 0.1694915254237288 . 0.3287671232876712))
-     ("left7"
-      (ecb-directories-buffer-name 0.17872340425531916 . 0.589041095890411)
-      (ecb-history-buffer-name 0.17872340425531916 . 0.1643835616438356)
-      (ecb-methods-buffer-name 0.17872340425531916 . 0.2465753424657534))
-     ("left8"
-      (ecb-directories-buffer-name 0.20425531914893616 . 0.3013698630136986)
-      (ecb-sources-buffer-name 0.20425531914893616 . 0.2328767123287671)
-      (ecb-methods-buffer-name 0.20425531914893616 . 0.3013698630136986)
-      (ecb-history-buffer-name 0.20425531914893616 . 0.1643835616438356))))
- '(ecb-options-version "2.40")
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(helm-buffer-max-length nil)
@@ -187,7 +133,7 @@
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(dired-quick-sort kotlin-mode prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide spacegray-theme sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
