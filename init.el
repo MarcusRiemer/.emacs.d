@@ -81,7 +81,6 @@
 (load-file "~/.emacs.d/elisp/copy-filename.el")
 
 ;; Packages are loaded, it's time for serious stuff
-(load-file "~/.emacs.d/elisp/lsp.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
@@ -90,12 +89,12 @@
 (load-file "~/.emacs.d/elisp/latex.el")
 (load-file "~/.emacs.d/elisp/javascript.el")
 (load-file "~/.emacs.d/elisp/typescript.el")
+(load-file "~/.emacs.d/elisp/elixir.el")
 (load-file "~/.emacs.d/elisp/magit.el")
 (load-file "~/.emacs.d/elisp/spelling.el")
 (load-file "~/.emacs.d/elisp/prettier.el")
 
 ;; Lets use a theme :)
-(global-hl-line-mode 1)
 (load-theme 'ample-zen t)
 
 ;; Allow flipping buffers
@@ -133,7 +132,7 @@
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
