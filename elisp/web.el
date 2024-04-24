@@ -10,11 +10,6 @@
 ;; Highlight matching elements and their whole column
 (setq web-mode-enable-current-element-highlight t)
 
-;; For the time being, we assume that all HTML files
-;; use the liquid syntax
-(setq web-mode-engines-alist
-      '(("django"  . "\\.html\\'")))
-
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)

@@ -81,7 +81,10 @@
 (load-file "~/.emacs.d/elisp/copy-filename.el")
 
 ;; Packages are loaded, it's time for serious stuff
+(load-file "~/.emacs.d/elisp/asdf.el")
+(load-file "~/.emacs.d/elisp/lsp.el")
 (load-file "~/.emacs.d/elisp/go.el")
+(load-file "~/.emacs.d/elisp/elixir.el")
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
 (load-file "~/.emacs.d/elisp/company.el")
 (load-file "~/.emacs.d/elisp/markdown.el")
