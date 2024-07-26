@@ -61,7 +61,7 @@
 (package-initialize)
 
 ;; Making sure all relevant packages are installed
-(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode lsp-mode lsp-ui helm-lsp use-package rbenv))
+(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode lsp-mode lsp-ui helm-lsp use-package auto-dark))
 (mapc #'package-install my-package-list)
 
 ;; This is only needed once, near the top of the file
@@ -82,7 +82,6 @@
 
 ;; Packages are loaded, it's time for serious stuff
 (load-file "~/.emacs.d/elisp/asdf.el")
-(load-file "~/.emacs.d/elisp/lsp.el")
 (load-file "~/.emacs.d/elisp/go.el")
 (load-file "~/.emacs.d/elisp/elixir.el")
 (load-file "~/.emacs.d/elisp/helm-projectile.el")
@@ -96,6 +95,7 @@
 (load-file "~/.emacs.d/elisp/magit.el")
 (load-file "~/.emacs.d/elisp/spelling.el")
 (load-file "~/.emacs.d/elisp/prettier.el")
+(load-file "~/.emacs.d/elisp/lsp.el")
 
 ;; Lets use a theme :)
 (load-theme 'ample-zen t)
@@ -130,12 +130,14 @@
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(helm-buffer-max-length nil)
+ '(lsp-disabled-clients '(ruby-ls rubocop-ls))
+ '(lsp-ruby-lsp-use-bundler t)
  '(lsp-solargraph-use-bundler t)
  '(magit-tag-arguments '("--annotate"))
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
