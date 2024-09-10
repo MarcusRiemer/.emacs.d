@@ -137,7 +137,7 @@
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(helm-lsp lsp-ui auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values

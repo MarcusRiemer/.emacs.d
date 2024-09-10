@@ -11,3 +11,5 @@ url
 transient
 projects
 .lsp-session-v1
+.tramp
+.cache

@@ -15,7 +15,5 @@
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
-;; if you use typescript-mode
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
 ;; if you use treesitter based typescript-ts-mode (emacs 29+)
 (add-hook 'typescript-ts-mode-hook #'setup-tide-mode)

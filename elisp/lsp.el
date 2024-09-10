@@ -11,6 +11,7 @@
 
   :hook (
          (elixir-ts-mode . lsp)
+         (heex-ts-mode . lsp)
          (ruby-mode . lsp))
   :commands lsp)
 
