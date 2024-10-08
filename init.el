@@ -60,10 +60,6 @@
 (setq package-enable-at-startup nil) ; To avoid initializing twice
 (package-initialize)
 
-;; Making sure all relevant packages are installed
-(setq my-package-list '(prettier adaptive-wrap ample-zen-theme auctex buffer-move company flycheck go-mode haskell-mode projectile helm helm-projectile magit nyan-mode tide web-mode lsp-mode lsp-ui helm-lsp use-package auto-dark))
-(mapc #'package-install my-package-list)
-
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   (require 'use-package))
@@ -77,28 +73,28 @@
 (if (display-graphic-p)
     (nyan-mode))
 
-;; Grabbing filenames from buffers
-(load-file "~/.emacs.d/elisp/copy-filename.el")
-
-;; Packages are loaded, it's time for serious stuff
-(load-file "~/.emacs.d/elisp/asdf.el")
-(load-file "~/.emacs.d/elisp/go.el")
-(load-file "~/.emacs.d/elisp/elixir.el")
-(load-file "~/.emacs.d/elisp/helm-projectile.el")
-(load-file "~/.emacs.d/elisp/company.el")
-(load-file "~/.emacs.d/elisp/markdown.el")
-(load-file "~/.emacs.d/elisp/web.el")
-(load-file "~/.emacs.d/elisp/latex.el")
-(load-file "~/.emacs.d/elisp/javascript.el")
-(load-file "~/.emacs.d/elisp/typescript.el")
-(load-file "~/.emacs.d/elisp/elixir.el")
-(load-file "~/.emacs.d/elisp/magit.el")
-(load-file "~/.emacs.d/elisp/spelling.el")
-(load-file "~/.emacs.d/elisp/prettier.el")
-(load-file "~/.emacs.d/elisp/lsp.el")
-
 ;; Lets use a theme :)
 (load-theme 'ample-zen t)
+
+;; Grabbing filenames from buffers
+(load-file (expand-file-name "elisp/copy-filename.el" user-emacs-directory))
+
+;; Packages are loaded, it's time for serious stuff
+(load-file (expand-file-name "elisp/asdf.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/go.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/elixir.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/helm-projectile.el"user-emacs-directory))
+(load-file (expand-file-name "elisp/company.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/markdown.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/web.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/latex.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/javascript.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/typescript.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/elixir.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/magit.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/spelling.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/prettier.el" user-emacs-directory))
+(load-file (expand-file-name "elisp/lsp.el" user-emacs-directory))
 
 ;; Allow flipping buffers
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
@@ -137,7 +133,7 @@
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(helm-lsp lsp-ui auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(mise helm-lsp lsp-ui auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
@@ -145,33 +141,12 @@
      (TeX-master . t)))
  '(tide-server-max-response-length 1024000)
  '(tide-sync-request-timeout 120)
- '(typescript-indent-level 2)
- '(vc-annotate-background "#3b3b3b")
- '(vc-annotate-color-map
-   '((20 . "#dd5542")
-     (40 . "#CC5542")
-     (60 . "#fb8512")
-     (80 . "#baba36")
-     (100 . "#bdbc61")
-     (120 . "#7d7c61")
-     (140 . "#6abd50")
-     (160 . "#6aaf50")
-     (180 . "#6aa350")
-     (200 . "#6a9550")
-     (220 . "#6a8550")
-     (240 . "#6a7550")
-     (260 . "#9b55c3")
-     (280 . "#6CA0A3")
-     (300 . "#528fd1")
-     (320 . "#5180b3")
-     (340 . "#6380b3")
-     (360 . "#DC8CC3")))
- '(vc-annotate-very-old-color "#DC8CC3"))
+ '(typescript-indent-level 2))
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#212121" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 110 :width normal :foundry "ADBO" :family "Source Code Pro")))))
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'downcase-region 'disabled nil)
+ )
