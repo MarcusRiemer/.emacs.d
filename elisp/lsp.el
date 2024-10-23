@@ -5,13 +5,16 @@
 
   ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
   (setq lsp-lens-enable nil)
+  (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-signature-auto-activate nil) ;; you could manually request them via `lsp-signature-activate`
+  (setq lsp-signature-render-documentation nil)
+  (setq lsp-eldoc-enable-hover nil)
 
   :hook (
          (elixir-ts-mode . lsp)
-         (heex-ts-mode . lsp)
+;;         (heex-ts-mode . lsp)
          (ruby-mode . lsp))
   :commands lsp)
 

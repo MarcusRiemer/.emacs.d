@@ -79,6 +79,11 @@
 ;; Grabbing filenames from buffers
 (load-file (expand-file-name "elisp/copy-filename.el" user-emacs-directory))
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; Packages are loaded, it's time for serious stuff
 (load-file (expand-file-name "elisp/asdf.el" user-emacs-directory))
 (load-file (expand-file-name "elisp/go.el" user-emacs-directory))
