@@ -84,8 +84,9 @@
   :config
   (editorconfig-mode 1))
 
+(add-hook 'after-init-hook #'global-mise-mode)
+
 ;; Packages are loaded, it's time for serious stuff
-(load-file (expand-file-name "elisp/asdf.el" user-emacs-directory))
 (load-file (expand-file-name "elisp/go.el" user-emacs-directory))
 (load-file (expand-file-name "elisp/elixir.el" user-emacs-directory))
 (load-file (expand-file-name "elisp/helm-projectile.el"user-emacs-directory))
@@ -132,6 +133,10 @@
  '(git-commit-summary-max-length 999)
  '(helm-buffer-max-length nil)
  '(lsp-disabled-clients '(ruby-ls rubocop-ls))
+ '(lsp-elixir-ls-download-url
+   "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.24.1/elixir-ls-v0.24.1.zip")
+ '(lsp-elixir-ls-version "v0.24.1")
+ '(lsp-log-io t)
  '(lsp-ruby-lsp-use-bundler t)
  '(lsp-solargraph-use-bundler t)
  '(magit-tag-arguments '("--annotate"))
