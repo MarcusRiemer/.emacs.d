@@ -42,7 +42,7 @@
 (global-set-key (kbd "M-<down>")  'windmove-down)
 
 ;; Remove prompt when killing a buffer
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+;;(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; Faster than the default scp
 (setq tramp-default-method "ssh")
@@ -118,24 +118,21 @@
  ;; If there is more than one, they won't work right.
  '(TeX-engine 'xetex)
  '(TeX-view-program-selection
-   '(((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-pdf "Evince")
-     (output-html "xdg-open")))
+   '(((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi")
+     (output-pdf "Evince") (output-html "xdg-open")))
  '(adaptive-wrap-extra-indent 4)
  '(ansi-color-names-vector
-   ["#212121" "#CC5542" "#6aaf50" "#7d7c61" "#5180b3" "#DC8CC3" "#9b55c3" "#bdbdb3"])
+   ["#212121" "#CC5542" "#6aaf50" "#7d7c61" "#5180b3" "#DC8CC3" "#9b55c3"
+    "#bdbdb3"])
  '(create-lockfiles nil)
  '(custom-safe-themes
-   '("8cf56691a70156f611ac86d0bbcbc7dee7673df195de5918f34bfdc6814ffd39" default))
+   '("8cf56691a70156f611ac86d0bbcbc7dee7673df195de5918f34bfdc6814ffd39"
+     default))
  '(fci-rule-color "#2e2e2e")
  '(git-commit-summary-max-length 999)
  '(helm-buffer-max-length nil)
  '(lsp-disabled-clients '(ruby-ls rubocop-ls))
- '(lsp-elixir-ls-download-url
-   "https://github.com/elixir-lsp/elixir-ls/releases/download/v0.24.1/elixir-ls-v0.24.1.zip")
- '(lsp-elixir-ls-version "v0.24.1")
+ '(lsp-file-watch-threshold 2000)
  '(lsp-log-io t)
  '(lsp-ruby-lsp-use-bundler t)
  '(lsp-solargraph-use-bundler t)
@@ -143,12 +140,18 @@
  '(mode-require-final-newline nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(mise helm-lsp lsp-ui auto-dark elixir-ts-mode graphql-mode dired-quick-sort prettier lsp-mode web-mode eglot helm-flyspell helm-ag graphviz-dot-mode helm projectile flycheck yaxception yaml-mode tide sass-mode nyan-mode markdown-mode magit log4e json-mode highlight-symbol helm-projectile haskell-mode go-mode f company buffer-move auto-complete auctex ample-zen-theme adaptive-wrap))
+   '(adaptive-wrap ample-zen-theme auctex auto-complete auto-dark
+                   buffer-move company dired-quick-sort eglot
+                   elixir-ts-mode f flycheck go-mode graphql-mode
+                   graphviz-dot-mode haskell-mode helm helm-ag
+                   helm-flyspell helm-lsp helm-projectile
+                   highlight-symbol json-mode log4e lsp-mode magit
+                   markdown-mode mise nyan-mode prettier projectile
+                   sass-mode tide web-mode yaml-mode yaxception))
  '(prettier-enabled-parsers '(angular css html typescript))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values
-   '((TeX-command-extra-options . "-shell-escape")
-     (TeX-master . t)))
+   '((TeX-command-extra-options . "-shell-escape") (TeX-master . t)))
  '(tide-server-max-response-length 1024000)
  '(tide-sync-request-timeout 120)
  '(typescript-indent-level 2))
